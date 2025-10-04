@@ -3,7 +3,7 @@ export interface CardProps {
     image: string;
     individualIndex: number;
     rating: number;
-    location: string;
+    address: string;
     infrastructure: BadgeProps[];
 }
 

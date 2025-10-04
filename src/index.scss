@@ -16,6 +16,14 @@ body {
   padding-left: 15px;
   padding-right: 15px;
   margin: 0 auto;
+  transition: margin-left 0.3s ease;
+}
+
+// Адаптивность для мобильных устройств
+@media (max-width: 768px) {
+  .container {
+    margin-left: 0 !important;
+  }
 }
 
 main {

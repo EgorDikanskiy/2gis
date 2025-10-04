@@ -14,7 +14,7 @@ const Card: React.FC<CardProps> = ({
       
       <div className={styles.content}>
         <h3 className={styles.title}>{CardProps.title}</h3>
-        <p className={styles.location}>{CardProps.location}</p>
+        <p className={styles.location}>{CardProps.address}</p>
         
         <div className={styles.rating}>
           <span className={styles.ratingValue}>{CardProps.rating}</span>

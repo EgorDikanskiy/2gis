@@ -1,6 +1,7 @@
 import { useSearchParams } from 'react-router-dom';
 import Map from '../../components/Map';
 import CatalogBlock from '../../components/CatalogBlock';
+import Filter from '../../components/Filter';
 import type { CardProps } from '../../components/Card/types';
 
 
@@ -540,6 +541,11 @@ const HomePage = () => {
     const [searchParams] = useSearchParams();
     const currentTab = searchParams.get('tab') || 'catalog';
 
+    const handleFilterChange = (filters: { filters: Array<{ type: string; priority: number }> }) => {
+        console.log('Filter data:', filters);
+        // Здесь можно добавить логику фильтрации карточек
+    };
+
     const renderContent = () => {
         switch (currentTab) {
             case 'map':
@@ -551,8 +557,11 @@ const HomePage = () => {
     };
 
     return (
-        <div className='container'>
-            {renderContent()}
+        <div>
+            <Filter onFilterChange={handleFilterChange} />
+            <div style={{ marginLeft: '300px' }}>
+                {renderContent()}
+            </div>
         </div>
     );
 };

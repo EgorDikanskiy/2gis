@@ -1,0 +1,245 @@
+@use '../../styles/variables.scss';
+@use '../../styles/mixin.scss';
+
+.filter {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 300px;
+  height: 100vh;
+  background-color: variables.$white;
+  border-right: 1px solid variables.$black-10;
+  padding: 24px;
+  overflow-y: auto;
+  z-index: 50;
+  box-shadow: 2px 0 8px rgba(16, 15, 13, 0.1);
+}
+
+.title {
+  @extend .bold28;
+  color: variables.$black;
+  margin: 64px 0 32px 0;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.filterItem {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.label {
+  @extend .medium20;
+  color: variables.$black;
+  font-weight: 600;
+}
+
+.rangeContainer {
+  @include mixin.flex-align-center;
+  gap: 16px;
+}
+
+.rangeInput {
+  flex: 1;
+  height: 6px;
+  background: variables.$green-main;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  opacity: 0.3;
+  
+  &::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: variables.$green-main;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+    
+    &:hover {
+      background: variables.$green-tap;
+      transform: scale(1.1);
+    }
+  }
+  
+  &::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: variables.$green-main;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+    
+    &:hover {
+      background: variables.$green-tap;
+      transform: scale(1.1);
+    }
+  }
+  
+  &::-webkit-slider-track {
+    background: variables.$green-main;
+    border-radius: 3px;
+    opacity: 0.3;
+  }
+  
+  &::-moz-range-track {
+    background: variables.$green-main;
+    border-radius: 3px;
+    height: 6px;
+    opacity: 0.3;
+  }
+}
+
+.value {
+  @extend .regular16;
+  color: variables.$green-main;
+  font-weight: 600;
+  min-width: 24px;
+  text-align: center;
+  background-color: variables.$black-10;
+  padding: 4px 8px;
+  border-radius: 12px;
+}
+
+.buttonContainer {
+  @include mixin.flex-align-center;
+  gap: 12px;
+  margin-top: 24px;
+  flex-direction: column;
+}
+
+.applyButton {
+  @extend .regular16;
+  background-color: variables.$green-main;
+  color: variables.$white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  width: 100%;
+  
+  &:hover {
+    background-color: variables.$green-tap;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.resetButton {
+  @extend .regular16;
+  background-color: transparent;
+  color: variables.$black-20;
+  border: 1px solid variables.$black-10;
+  padding: 10px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  width: 100%;
+  
+  &:hover {
+    background-color: variables.$black-10;
+    color: variables.$black;
+    border-color: variables.$black-20;
+  }
+  
+  &:active {
+    background-color: variables.$black-20;
+  }
+}
+
+// Адаптивность для мобильных устройств
+@media (max-width: 768px) {
+  .filter {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid variables.$black-10;
+    padding: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .title {
+    font-weight: 500;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    margin-bottom: 20px;
+  }
+  
+  .form {
+    gap: 16px;
+  }
+  
+  .filterItem {
+    gap: 8px;
+  }
+  
+  .rangeContainer {
+    gap: 12px;
+  }
+  
+  .buttonContainer {
+    margin-top: 20px;
+    gap: 10px;
+  }
+  
+  .applyButton {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  
+  .resetButton {
+    padding: 8px 20px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .filter {
+    padding: 12px;
+  }
+  
+  .title {
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+  
+  .form {
+    gap: 12px;
+  }
+  
+  .buttonContainer {
+    margin-top: 16px;
+    gap: 8px;
+  }
+  
+  .applyButton {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+  
+  .resetButton {
+    padding: 6px 16px;
+    font-size: 12px;
+  }
+}
