@@ -1,12 +1,13 @@
 @use "./styles/reset.scss";
 @use "./styles/variables.scss";
-@use "./styles/Helvetica/fonts.scss";
+
+@use "./styles/Roboto/fonts.scss";
 
 body {
   margin: 0px;
   padding: 0px;
   background-color: variables.$white;
-  font-family: "Helvetica", sans-serif;
+  font-family: "Roboto";
   box-sizing: border-box;
 }
 

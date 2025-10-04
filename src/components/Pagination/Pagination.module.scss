@@ -9,7 +9,6 @@
 }
 
 .paginationButton {
-  @extend .regular16;
   background: none;
   border: 1px solid variables.$black-10;
   color: variables.$black;
@@ -47,7 +46,6 @@
 }
 
 .ellipsis {
-  @extend .regular16;
   color: variables.$black-20;
   padding: 8px 4px;
   user-select: none;

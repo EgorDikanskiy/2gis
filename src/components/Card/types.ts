@@ -19,9 +19,9 @@ export interface BadgeProps {
 }
 
 export const BadgeType = {
-    school: 'school',
-    kindergarten: 'kindergarten',
-    park: 'park',
+    school: 'Школ',
+    kindergarten: 'Дет. садов',
+    park: 'Парков',
 };
 
 export type BadgeType = typeof BadgeType[keyof typeof BadgeType];
