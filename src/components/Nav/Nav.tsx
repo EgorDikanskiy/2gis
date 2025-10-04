@@ -1,10 +1,13 @@
 import React from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate, useLocation } from 'react-router-dom';
 import styles from './Nav.module.scss';
+import { routerUrls } from 'config/routerUrls';
 
 const Nav: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const currentTab = searchParams.get('tab') || 'catalog';
+  const navigate = useNavigate();
+  const location = useLocation();
+  const currentTab = searchParams.get('tab');
   
   React.useEffect(() => {
     if (!searchParams.get('tab')) {
@@ -13,7 +16,12 @@ const Nav: React.FC = () => {
   }, [searchParams, setSearchParams]);
 
   const handleTabChange = (tab: string) => {
-    setSearchParams({ tab }, { replace: true });
+    // Если пользователь не на главной странице, редиректим на главную с выбранным табом
+    if (location.pathname !== routerUrls.root) {
+      navigate(`${routerUrls.root}?tab=${tab}`, { replace: true });
+    } else {
+      setSearchParams({ tab }, { replace: true });
+    }
   };
 
   return (

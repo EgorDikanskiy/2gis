@@ -1,5 +1,4 @@
 import { useSearchParams } from 'react-router-dom';
-import { useEffect } from 'react';
 import Map from '../../components/Map';
 import CatalogBlock from '../../components/CatalogBlock';
 import Filter from '../../components/Filter';
@@ -81,11 +80,6 @@ const mockCards: CardProps[] = [
 const HomePage = () => {
     const [searchParams] = useSearchParams();
     const currentTab = searchParams.get('tab') || 'catalog';
-
-    useEffect(() => {
-        // Принудительно обновляем компонент при изменении query параметров
-        console.log('Tab changed to:', currentTab);
-    }, [currentTab]);
 
     const handleFilterChange = (filters: { filters: Array<{ type: string; priority: number }> }) => {
         console.log('Filter data:', filters);

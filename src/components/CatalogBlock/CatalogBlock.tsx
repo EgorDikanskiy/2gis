@@ -12,7 +12,6 @@ interface CatalogBlockProps {
 
 const CatalogBlock: React.FC<CatalogBlockProps> = ({
   cards,
-  maxColumnCount,
   itemsPerPage = 6,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -34,7 +33,7 @@ const CatalogBlock: React.FC<CatalogBlockProps> = ({
           <Card key={startIndex + index} {...card} />
         ))}
       </div>
-
+      <p>avaegaeggeeg</p>
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}

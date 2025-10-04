@@ -14,7 +14,6 @@
 	min-height: 400px;
 	margin-bottom: 1rem;
 	overflow: hidden;
-	padding-left: 300px;
   
 	@media (min-width: 992px) {
 	  min-height: 600px;
