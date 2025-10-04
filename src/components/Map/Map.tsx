@@ -2,7 +2,6 @@
 import {TileLayer, MapContainer, Marker, Popup} from "react-leaflet";
 import type { CardProps } from "../Card/types";
 import { useNavigate } from "react-router-dom";
-import "leaflet/dist/leaflet.css";
 
 interface MapProps {
     items: CardProps[];
