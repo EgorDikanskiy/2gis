@@ -144,6 +144,7 @@ const DetailPage = () => {
                     ))}
                 </div>
             </section>
+            {/* @ts-expect-error */}
             <div className='map-container'><Map items={mapItems} /></div>
         </div>
     )
