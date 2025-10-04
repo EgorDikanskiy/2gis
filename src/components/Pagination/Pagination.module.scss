@@ -1,0 +1,83 @@
+@use '../../styles/variables.scss';
+@use '../../styles/mixin.scss';
+
+.pagination {
+  @include mixin.flex-center;
+  gap: 8px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.paginationButton {
+  @extend .regular16;
+  background: none;
+  border: 1px solid variables.$black-10;
+  color: variables.$black;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 40px;
+  height: 40px;
+  
+  &:hover:not(.disabled) {
+    background-color: variables.$green-main;
+    color: variables.$white;
+    border-color: variables.$green-main;
+  }
+  
+  &.active {
+    background-color: variables.$green-main;
+    color: variables.$white;
+    border-color: variables.$green-main;
+  }
+  
+  &.disabled {
+    color: variables.$black-20;
+    border-color: variables.$black-10;
+    cursor: not-allowed;
+    opacity: 0.5;
+    
+    &:hover {
+      background: none;
+      color: variables.$black-20;
+      border-color: variables.$black-10;
+    }
+  }
+}
+
+.ellipsis {
+  @extend .regular16;
+  color: variables.$black-20;
+  padding: 8px 4px;
+  user-select: none;
+}
+
+// Адаптивность для пагинации
+@media (max-width: 768px) {
+  .pagination {
+    margin-top: 24px;
+    gap: 4px;
+  }
+  
+  .paginationButton {
+    padding: 6px 10px;
+    min-width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pagination {
+    margin-top: 20px;
+    gap: 2px;
+  }
+  
+  .paginationButton {
+    padding: 4px 8px;
+    min-width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+}

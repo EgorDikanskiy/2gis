@@ -1,1 +1,48 @@
-// Стили для CatalogBlock
+@use '../../styles/variables.scss';
+@use '../../styles/mixin.scss';
+
+.catalogBlock {
+  padding: 24px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  width: 100%;
+  
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  
+  @media (min-width: 1600px) {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+}
+
+
+@media (max-width: 768px) {
+  .catalogBlock {
+    padding: 16px 0;
+  }
+  
+  .grid {
+    gap: 16px;
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .catalogBlock {
+    padding: 12px 0;
+  }
+  
+  .grid {
+    gap: 12px;
+  }
+}

@@ -1,0 +1,91 @@
+@use '../../styles/variables.scss';
+@use '../../styles/mixin.scss';
+
+.card {
+  background-color: variables.$white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(16, 15, 13, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  width: 100%;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(16, 15, 13, 0.15);
+  }
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.index {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: variables.$green-main;
+  color: variables.$white;
+  padding: 4px 8px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.content {
+  padding: 16px;
+}
+
+.title {
+  @extend .medium20;
+  color: variables.$black;
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+}
+
+.location {
+  @extend .regular12;
+  color: variables.$black-20;
+  margin: 0 0 12px 0;
+}
+
+.rating {
+  @include mixin.flex-align-center;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.ratingValue {
+  @extend .regular16;
+  color: variables.$black;
+  font-weight: 600;
+}
+
+.ratingStars {
+  color: variables.$yellow;
+  font-size: 14px;
+}
+
+.badges {
+  @include mixin.flex-align-center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  @extend .regular12;
+  background-color: variables.$black-10;
+  color: variables.$black-50;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-weight: 500;
+}
