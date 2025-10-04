@@ -52,9 +52,12 @@
   color: variables.$black;
   text-decoration: none;
   padding: 8px 16px;
-  @include mixin.rounded-box(6px);
   transition: all 0.2s ease;
   position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
   
   &::after {
     content: '';

@@ -1,10 +1,20 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import styles from './Nav.module.scss';
-import { routerUrls } from '../../config/routerUrls';
 
 const Nav: React.FC = () => {
-  const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const currentTab = searchParams.get('tab') || 'catalog';
+  
+  React.useEffect(() => {
+    if (!searchParams.get('tab')) {
+      setSearchParams({ tab: 'catalog' }, { replace: true });
+    }
+  }, [searchParams, setSearchParams]);
+
+  const handleTabChange = (tab: string) => {
+    setSearchParams({ tab });
+  };
 
   return (
     <nav className={styles.nav}>
@@ -14,20 +24,20 @@ const Nav: React.FC = () => {
         </div>
         <ul className={styles.menu}>
           <li className={styles.menuItem}>
-            <Link 
-              to={routerUrls.root} 
-              className={`${styles.menuLink} ${location.pathname === routerUrls.root ? styles.active : ''}`}
+            <button 
+              onClick={() => handleTabChange('catalog')}
+              className={`${styles.menuLink} ${currentTab === 'catalog' ? styles.active : ''}`}
             >
               Каталог
-            </Link>
+            </button>
           </li>
           <li className={styles.menuItem}>
-            <Link 
-              to={routerUrls.map} 
-              className={`${styles.menuLink} ${location.pathname === routerUrls.map ? styles.active : ''}`}
+            <button 
+              onClick={() => handleTabChange('map')}
+              className={`${styles.menuLink} ${currentTab === 'map' ? styles.active : ''}`}
             >
               Интерактивная карта
-            </Link>
+            </button>
           </li>
         </ul>
       </div>
