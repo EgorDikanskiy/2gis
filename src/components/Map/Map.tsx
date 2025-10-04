@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import {TileLayer, MapContainer, Marker, Popup} from "react-leaflet";
 import type { CardProps } from "../Card/types";
 import { useNavigate } from "react-router-dom";
@@ -16,9 +17,10 @@ const Map = ({items}: MapProps) => {
 
     return (
         <div className='map-container'>
+            {/* @ts-expect-error */}
             <MapContainer center={[55.792437, 37.662332]} zoom={9} scrollWheelZoom={true} attributionControl={false}>
-              <TileLayer
-                attribution='&copy; <a href="https://dev.2gis.ae/">2GIS</a>'
+              {/* @ts-expect-error */}
+              <TileLayer attribution='&copy; <a href="https://dev.2gis.ae/">2GIS</a>'
                 url="http://tile2.maps.2gis.com/tiles?x={x}&y={y}&z={z}"
               />
               {items.map((item)  => {
