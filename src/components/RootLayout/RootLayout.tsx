@@ -10,7 +10,7 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
   return (
     <div>
       <Nav />
-      <div className="container">
+      <div>
         <main>{children}</main>
       </div>
     </div>
