@@ -24,7 +24,6 @@
 }
 
 .logoText {
-  @extend .bold28;
   color: variables.$green-main;
   text-decoration: none;
   letter-spacing: -0.5px;
@@ -57,7 +56,6 @@
   background: none;
   border: none;
   cursor: pointer;
-  font-family: inherit;
   
   &::after {
     content: '';

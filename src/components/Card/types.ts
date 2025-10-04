@@ -3,7 +3,7 @@ export interface CardProps {
     image: string;
     individualIndex: number;
     rating: number;
-    location: string;
+    address: string;
     infrastructure: BadgeProps[];
 }
 
@@ -13,9 +13,9 @@ export interface BadgeProps {
 }
 
 export const BadgeType = {
-    school: 'school',
-    kindergarten: 'kindergarten',
-    park: 'park',
+    school: 'Школ',
+    kindergarten: 'Дет. садов',
+    park: 'Парков',
 };
 
 export type BadgeType = typeof BadgeType[keyof typeof BadgeType];

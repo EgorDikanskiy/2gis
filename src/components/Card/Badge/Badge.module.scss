@@ -1,0 +1,23 @@
+@use "styles/variables.scss" as *;
+
+.root {
+  display: flex;
+  justify-content: space-between;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 8px;
+  padding-right: 16px;
+  gap: 10px;
+
+  width: 100%
+}
+
+.line {
+  width: 3px;
+  height: 100%;
+  background-color: $green;
+}

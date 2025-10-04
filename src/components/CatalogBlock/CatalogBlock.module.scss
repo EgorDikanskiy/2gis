@@ -1,5 +1,5 @@
-@use '../../styles/variables.scss';
-@use '../../styles/mixin.scss';
+@use "styles/variables.scss";
+@use "styles/mixin.scss";
 
 .catalogBlock {
   padding: 24px 0;
@@ -12,25 +12,28 @@
 
 .grid {
   display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  width: 100%;
-  
-  @media (min-width: 1200px) {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  }
-  
-  @media (min-width: 1600px) {
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  }
-}
+  gap: 30px;
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 920px;
 
+  padding-left: 30px;
+  padding-right: 30px;
+
+  @media (max-width: 915px) {
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+  }
+
+  // @media (min-width: 1600px) {
+  //   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  // }
+}
 
 @media (max-width: 768px) {
   .catalogBlock {
     padding: 16px 0;
   }
-  
+
   .grid {
     gap: 16px;
     grid-template-columns: 1fr;
@@ -41,7 +44,7 @@
   .catalogBlock {
     padding: 12px 0;
   }
-  
+
   .grid {
     gap: 12px;
   }
