@@ -1,0 +1,127 @@
+@use '../../styles/variables.scss';
+@use '../../styles/mixin.scss';
+
+.nav {
+  background-color: variables.$white;
+  border-bottom: 1px solid variables.$black-10;
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(16, 15, 13, 0.1);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  @include mixin.flex-between;
+  height: 64px;
+}
+
+.logo {
+  @include mixin.flex-align-center;
+}
+
+.logoText {
+  @extend .bold28;
+  color: variables.$green-main;
+  text-decoration: none;
+  letter-spacing: -0.5px;
+  margin-bottom: 0;
+  
+  &:hover {
+    color: variables.$green-tap;
+  }
+}
+
+.menu {
+  @extend .flex-row;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 32px;
+}
+
+.menuItem {
+  position: relative;
+}
+
+.menuLink {
+  @extend .regular16;
+  color: variables.$black;
+  text-decoration: none;
+  padding: 8px 16px;
+  @include mixin.rounded-box(6px);
+  transition: all 0.2s ease;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: variables.$green-main;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+  
+  &:hover {
+    color: variables.$green-tap;
+    transform: translateY(-1px);
+  }
+  
+  &:active {
+    color: variables.$green-tap;
+  }
+  
+  &.active {
+    color: variables.$green-main;
+    
+    &::after {
+      width: calc(100% - 32px);
+      background-color: variables.$green-main;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+    height: 56px;
+  }
+  
+  .logoText {
+    font-weight: 500;
+    font-size: 1.25rem;
+    margin-bottom: 0;
+  }
+  
+  .menu {
+    gap: 16px;
+  }
+  
+  .menuLink {
+    font-weight: 400;
+    font-size: 1rem;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 12px;
+  }
+  
+  .menu {
+    gap: 8px;
+  }
+  
+  .menuLink {
+    font-weight: 400;
+    font-size: 0.75rem;
+    padding: 4px 8px;
+  }
+}

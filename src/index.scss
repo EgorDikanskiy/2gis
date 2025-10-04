@@ -1,0 +1,24 @@
+@use "./styles/reset.scss";
+@use "./styles/variables.scss";
+@use "./styles/Helvetica/fonts.scss";
+
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: variables.$white;
+  font-family: "Helvetica", sans-serif;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  max-width: 1270px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 0 auto;
+}
+
+main {
+  padding-top: 20px;
+  min-height: calc(100vh - 100px);
+}
