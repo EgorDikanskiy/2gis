@@ -13,7 +13,7 @@ const Nav: React.FC = () => {
   }, [searchParams, setSearchParams]);
 
   const handleTabChange = (tab: string) => {
-    setSearchParams({ tab });
+    setSearchParams({ tab }, { replace: true });
   };
 
   return (

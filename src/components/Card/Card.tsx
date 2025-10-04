@@ -2,14 +2,22 @@ import locationIcon from "assets/icons/location.svg";
 import image from "assets/images/mock-image.png";
 import React from "react";
 import type { CardProps } from "./types";
+import { useNavigate } from "react-router-dom";
+import { routerUrls } from "config/routerUrls";
 
 import Badge from "components/Card/Badge/Badge";
 import { Text } from "components/Text/Text";
 import styles from "./Card.module.scss";
 
 const Card: React.FC<CardProps> = ({ ...CardProps }) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(routerUrls.detail.create(CardProps.id), { replace: true });
+  };
+
   return (
-    <div className={styles.card}>
+    <div className={styles.card} onClick={handleCardClick} style={{ cursor: 'pointer' }}>
       <div className={styles.imageContainer}>
         <img
           // src={CardProps.image}

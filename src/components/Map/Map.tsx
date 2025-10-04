@@ -2,6 +2,7 @@
 import {TileLayer, MapContainer, Marker, Popup} from "react-leaflet";
 import type { CardProps } from "../Card/types";
 import { useNavigate } from "react-router-dom";
+import { routerUrls } from "config/routerUrls";
 
 interface MapProps {
     items: CardProps[];
@@ -11,7 +12,7 @@ const Map = ({items}: MapProps) => {
     const navigate = useNavigate();
 
     const handleDetailsClick = (itemId: number) => {
-        navigate(`/details/${itemId}`);
+        navigate(routerUrls.detail.create(itemId), { replace: true });
     };
 
     return (
