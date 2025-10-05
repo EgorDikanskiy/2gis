@@ -1,18 +1,23 @@
-import React from 'react';
-import { useSearchParams, useNavigate, useLocation } from 'react-router-dom';
-import styles from './Nav.module.scss';
-import { routerUrls } from 'config/routerUrls';
-import logo from '../../assets/images/logo.png'
+import React from "react";
+import {
+  useSearchParams,
+  useNavigate,
+  useLocation,
+  Link,
+} from "react-router-dom";
+import styles from "./Nav.module.scss";
+import { routerUrls } from "config/routerUrls";
+import logo from "assets/images/logo.png";
 
 const Nav: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
   const location = useLocation();
-  const currentTab = searchParams.get('tab');
-  
+  const currentTab = searchParams.get("tab");
+
   React.useEffect(() => {
-    if (!searchParams.get('tab')) {
-      setSearchParams({ tab: 'catalog' }, { replace: true });
+    if (!searchParams.get("tab")) {
+      setSearchParams({ tab: "catalog" }, { replace: true });
     }
   }, [searchParams, setSearchParams]);
 
@@ -27,24 +32,30 @@ const Nav: React.FC = () => {
   return (
     <nav className={styles.nav}>
       <div className={styles.container}>
-        <div className={styles.logo}>
-          <span className={styles.logoText}>
-            <img src={logo}></img>
-          </span>
-        </div>
+        <Link to="/">
+          <div className={styles.logo}>
+            <span className={styles.logoText}>
+              <img src={logo}></img>
+            </span>
+          </div>
+        </Link>
         <ul className={styles.menu}>
           <li className={styles.menuItem}>
-            <button 
-              onClick={() => handleTabChange('catalog')}
-              className={`${styles.menuLink} ${currentTab === 'catalog' ? styles.active : ''}`}
+            <button
+              onClick={() => handleTabChange("catalog")}
+              className={`${styles.menuLink} ${
+                currentTab === "catalog" ? styles.active : ""
+              }`}
             >
               Каталог
             </button>
           </li>
           <li className={styles.menuItem}>
-            <button 
-              onClick={() => handleTabChange('map')}
-              className={`${styles.menuLink} ${currentTab === 'map' ? styles.active : ''}`}
+            <button
+              onClick={() => handleTabChange("map")}
+              className={`${styles.menuLink} ${
+                currentTab === "map" ? styles.active : ""
+              }`}
             >
               Интерактивная карта
             </button>

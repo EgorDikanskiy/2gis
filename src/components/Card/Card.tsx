@@ -13,13 +13,19 @@ const Card: React.FC<CardProps> = ({ ...CardProps }) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {
-    // Сохраняем individualIndex в localStorage
-    localStorage.setItem('individualIndex', CardProps.individualIndex.toString());
+    localStorage.setItem(
+      "individualIndex",
+      CardProps.individualIndex.toString()
+    );
     navigate(routerUrls.detail.create(CardProps.id), { replace: true });
   };
 
   return (
-    <div className={styles.card} onClick={handleCardClick} style={{ cursor: 'pointer' }}>
+    <div
+      className={styles.card}
+      onClick={handleCardClick}
+      style={{ cursor: "pointer" }}
+    >
       <div className={styles.imageContainer}>
         <img
           // src={CardProps.image}
@@ -62,14 +68,29 @@ const Card: React.FC<CardProps> = ({ ...CardProps }) => {
           </div>
         </div>
 
-        <div className={styles["card__badges"]}>
-          {CardProps.infrastructure.map((badge, index) => {
-            if (index < 8) {
-              return (
-                <Badge key={index} type={badge.type} count={badge.count} />
-              );
-            }
-          })}
+        <div>
+          <Text
+            className={styles.bottom__title}
+            tag="div"
+            view="p-16"
+            weight="medium"
+            color="primary"
+          >
+            В пределах{" "}
+            <Text tag="span" color="green">
+              15
+            </Text>{" "}
+            минут пешком
+          </Text>
+          <div className={styles["card__badges"]}>
+            {CardProps.infrastructure.map((badge, index) => {
+              if (index < 8) {
+                return (
+                  <Badge key={index} type={badge.type} count={badge.count} />
+                );
+              }
+            })}
+          </div>
         </div>
       </div>
     </div>
