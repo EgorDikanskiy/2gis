@@ -1,5 +1,5 @@
-@use '../../styles/variables.scss';
-@use '../../styles/mixin.scss';
+@use 'styles/variables.scss';
+@use 'styles/mixin.scss';
 
 .nav {
   background-color: variables.$white;
@@ -12,7 +12,6 @@
 }
 
 .container {
-  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
   @include mixin.flex-between;

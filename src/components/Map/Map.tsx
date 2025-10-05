@@ -2,6 +2,28 @@
 import {TileLayer, MapContainer, Marker, Popup} from "react-leaflet";
 import { useNavigate } from "react-router-dom";
 import { routerUrls } from "config/routerUrls";
+import L from "leaflet";
+import redPin from '../../../css/images/marker-icon-red.png'
+
+// Define the default marker icon
+const defaultIcon = L.icon({
+  iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+  shadowSize: [41, 41],
+});
+
+// Define the larger marker icon (doubled size)
+const largeIcon = L.icon({
+  iconUrl: redPin,
+   iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+  shadowSize: [41, 41],
+});
 
 interface MapItem {
     id: number;
@@ -31,16 +53,15 @@ const Map = ({items, zoom, center, isDetail }: MapProps) => {
 
     return (
         <div className='map-container'>
-            {/* @ts-expect-error */}
             <MapContainer center={center} zoom={zoom} scrollWheelZoom={true} attributionControl={false}>
-              {/* @ts-expect-error react-leaflet types resolution in this setup */}
               <TileLayer attribution='&copy; <a href="https://dev.2gis.ae/">2GIS</a>'
                 url="http://tile2.maps.2gis.com/tiles?x={x}&y={y}&z={z}"
               />
               {items.map((item, index)  => {
                 const shouldShow = isDetail ? index === 0 : true;
+                const markerIcon = isDetail && index === 0 ? largeIcon : defaultIcon;
                 return (
-                   <Marker key={item.id} position={[item.coordinates.lat, item.coordinates.lon]}>
+                   <Marker key={item.id} position={[item.coordinates.lat, item.coordinates.lon]} icon={markerIcon}>
                      (
                        <Popup>
                          <div style={{ padding: '10px', minWidth: '200px' }}>
