@@ -168,38 +168,47 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
 
   return (
     <div className={styles.filter}>
-      <Text className={styles.title} tag="div" color="accent">
-        Укажите важность мест
-      </Text>
-      <Text className={styles.desc} color="secondary" view="p-14">
-        Ранжируйте желаемые места по приоритетности
-      </Text>
+      <div className={styles.title}>
+        <Text tag="div" color="accent">
+          Укажите важность мест
+        </Text>
+        <Text tag="div" color="secondary" view="p-14">
+          Ранжируйте желаемые места по приоритетности
+        </Text>
+      </div>
 
       <form className={styles.form}>
-        {filterItems.map((item) => (
-          <div key={item.id} className={styles.item}>
-            <div className={styles.item__header}>
-              <img src={item.icon} alt="Location Icon" width={26} height={26} />
-              <Text view="p-20" weight="medium">
-                {item.label}
-              </Text>
+        <div className={styles.items__container}>
+          {filterItems.map((item) => (
+            <div key={item.id} className={styles.item}>
+              <div className={styles.item__header}>
+                <img
+                  src={item.icon}
+                  alt="Location Icon"
+                  width={26}
+                  height={26}
+                />
+                <Text view="p-20" weight="medium">
+                  {item.label}
+                </Text>
+              </div>
+              <div className={styles.rangeContainer}>
+                <input
+                  type="range"
+                  id={item.id}
+                  min="1"
+                  max="10"
+                  value={item.value}
+                  onChange={(e) =>
+                    handleFilterChange(item.id, parseInt(e.target.value))
+                  }
+                  className={styles.rangeInput}
+                />
+                <span className={styles.value}>{item.value}</span>
+              </div>
             </div>
-            <div className={styles.rangeContainer}>
-              <input
-                type="range"
-                id={item.id}
-                min="1"
-                max="10"
-                value={item.value}
-                onChange={(e) =>
-                  handleFilterChange(item.id, parseInt(e.target.value))
-                }
-                className={styles.rangeInput}
-              />
-              <span className={styles.value}>{item.value}</span>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
 
         <div className={styles.buttonContainer}>
           <button
