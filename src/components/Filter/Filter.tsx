@@ -1,11 +1,17 @@
 import eduIcon from "assets/icons/edu.svg";
-import kinderIcon from "assets/icons/kinder.svg";
-import locationIcon from "assets/icons/location.svg";
 import medIcon from "assets/icons/med.svg";
-import carsIcon from "assets/icons/cars.svg";
 import { Text } from "components/Text";
 import React, { useState } from "react";
 import styles from "./Filter.module.scss";
+
+import kinderIcon from "assets/icons/kinder.svg";
+import mallIcon from "assets/icons/malls.svg";
+import metroIcon from "assets/icons/metro.svg";
+import parkingIcon from "assets/icons/parking.svg";
+import parkIcon from "assets/icons/parks.svg";
+import pharmIcon from "assets/icons/pharm.svg";
+import pickupIcon from "assets/icons/pickup.svg";
+import shopIcon from "assets/icons/shops.svg";
 
 interface FilterItem {
   id: string;
@@ -63,14 +69,14 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
       label: "Парковки",
       value: tempFilters.parking,
       type: "parking",
-      icon: carsIcon,
+      icon: parkingIcon,
     },
     {
       id: "park",
       label: "Парки",
       value: tempFilters.park,
       type: "park",
-      icon: locationIcon,
+      icon: parkIcon,
     },
     {
       id: "clinic",
@@ -84,35 +90,35 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
       label: "Метро",
       value: tempFilters.metro,
       type: "metro",
-      icon: locationIcon,
+      icon: metroIcon,
     },
     {
       id: "grocery_store",
       label: "Магазины",
       value: tempFilters.grocery_store,
       type: "grocery_store",
-      icon: locationIcon,
+      icon: shopIcon,
     },
     {
       id: "shopping_mall",
       label: "Торговые центры",
       value: tempFilters.shopping_mall,
       type: "shopping_mall",
-      icon: locationIcon,
+      icon: mallIcon,
     },
     {
       id: "pharmacy",
       label: "Аптеки",
       value: tempFilters.pharmacy,
       type: "pharmacy",
-      icon: medIcon,
+      icon: pharmIcon,
     },
     {
       id: "pickup_point",
       label: "Пункты выдачи",
       value: tempFilters.pickup_point,
       type: "pickup_point",
-      icon: locationIcon,
+      icon: pickupIcon,
     },
   ];
 
@@ -173,7 +179,7 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
         {filterItems.map((item) => (
           <div key={item.id} className={styles.item}>
             <div className={styles.item__header}>
-              <img src={item.icon} alt="Location Icon" />
+              <img src={item.icon} alt="Location Icon" width={26} height={26} />
               <Text view="p-20" weight="medium">
                 {item.label}
               </Text>
