@@ -1,5 +1,5 @@
-@use "../../styles/variables.scss";
-@use "../../styles/mixin.scss";
+@use "styles/variables.scss";
+@use "styles/mixin.scss";
 
 .filter {
   position: sticky;
@@ -9,23 +9,21 @@
   max-height: calc(100vh - 54px);
   background-color: variables.$white;
   border-right: 1px solid variables.$black-10;
-  padding: 18px;
   overflow-y: auto;
   box-shadow: 2px 0 8px rgba(16, 15, 13, 0.1);
-  
-  /* Скрытие скроллбара */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .filter::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none;
 }
 
 .item {
   background-color: white;
   border-radius: 4px;
-  padding: 7px;
+  padding: 10px;
 }
 
 .item__header {
@@ -36,11 +34,19 @@
 .title {
   @extend .medium20;
   color: variables.$black;
-  margin-bottom: 7px;
+  padding: 18px 0 18px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  align-items: start;
 }
 
-.desc {
-  margin-bottom: 18px;
+.items__container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 18px;
 }
 
 .form {
@@ -127,15 +133,20 @@
   font-weight: 600;
   min-width: 24px;
   text-align: center;
-  // background-color: variables.$black-10;
   padding: 4px 8px;
   border-radius: 12px;
 }
 
 .buttonContainer {
-  @include mixin.flex-align-center;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
   gap: 12px;
-  flex-direction: column;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  padding: 18px;
 }
 
 .applyButton {
