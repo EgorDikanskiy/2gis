@@ -54,7 +54,7 @@ const Card: React.FC<CardProps> = ({ ...CardProps }) => {
             <Text tag="div" view="p-18" color="primary" weight="medium">
               {"на "}
               <Text tag="span" view="p-18" color="green" weight="medium">
-                9/10
+                {CardProps.individualIndex.toFixed(2)}
               </Text>
             </Text>
           </div>

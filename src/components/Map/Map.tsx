@@ -27,7 +27,7 @@ const Map = ({items}: MapProps) => {
               {/* @ts-expect-error */}
               {items.map((item)  => {
                 return (
-                   <Marker key={item.id} position={[item.coordinates.lon, item.coordinates.lat]}>
+                   <Marker key={item.id} position={[item.coordinates.lat, item.coordinates.lon]}>
                      <Popup>
                        <div style={{ padding: '10px', minWidth: '200px' }}>
                          <h3 style={{ margin: '0 0 8px 0', fontSize: '16px', fontWeight: 'bold' }}>
