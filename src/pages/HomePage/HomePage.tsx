@@ -17,8 +17,35 @@ const HomePage = () => {
     const API_BASE_URL = 'http://localhost:8000/api';
 
     useEffect(() => {
+        // Try loading saved filters from localStorage
+        try {
+            const saved = localStorage.getItem('filters');
+            if (saved) {
+                const parsed = JSON.parse(saved);
+                // Basic validation
+                if (parsed && Array.isArray(parsed.filters)) {
+                    loadWithFilters(parsed);
+                    return;
+                }
+            }
+        } catch {}
+        // Fallback to default initial data
         loadInitialData();
     }, []);
+
+    const loadWithFilters = async (filters: { filters: Array<{ type: string; priority: number }> }) => {
+        try {
+            setIsLoading(true);
+            setError(null);
+            const data = await fetchCards(filters);
+            setCards(data);
+        } catch (err) {
+            console.error('Error loading data with filters:', err);
+            setError('Ошибка загрузки данных');
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     const loadInitialData = async () => {
         try {
@@ -104,7 +131,7 @@ const HomePage = () => {
                     address: item.address || 'Адрес не указан',
                     infrastructure: item.infrastructure || item.infrastructure_data || [],
                     coordinates: {
-                        lat: item.coordinates?.lat || item.lat || 55.7558, // Москва по умолчанию
+                        lat: item.coordinates?.lat || item.lat || 55.7558,
                         lon: item.coordinates?.lon || item.lon || 37.6176
                     }
                 }));
@@ -189,7 +216,20 @@ const HomePage = () => {
 
         switch (currentTab) {
             case 'map':
-                return <div className='map-container'><Map items={cards} /></div>;
+                return (
+                    <div className='map-container'>
+                        {cards.length > 0 ? (
+                            <Map
+                                items={cards}
+                                zoom={10}
+                                center={[cards[0].coordinates.lat, cards[0].coordinates.lon]}
+                                isDetail={false}
+                            />
+                        ) : (
+                            <div>Нет данных</div>
+                        )}
+                    </div>
+                );
             case 'catalog':
             default:
                 return <div className='container'><CatalogBlock cards={cards} maxColumnCount={3} itemsPerPage={6} /></div>;

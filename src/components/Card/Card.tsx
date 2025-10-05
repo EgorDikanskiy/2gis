@@ -13,6 +13,8 @@ const Card: React.FC<CardProps> = ({ ...CardProps }) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {
+    // Сохраняем individualIndex в localStorage
+    localStorage.setItem('individualIndex', CardProps.individualIndex.toString());
     navigate(routerUrls.detail.create(CardProps.id), { replace: true });
   };
 

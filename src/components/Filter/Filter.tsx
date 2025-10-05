@@ -131,6 +131,11 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
       })),
     };
 
+    // Persist filters to localStorage
+    try {
+      localStorage.setItem('filters', JSON.stringify(filterData));
+    } catch {}
+
     onFilterChange?.(filterData);
   };
 
@@ -156,6 +161,11 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
         priority: defaultFilters[item.id],
       })),
     };
+
+    // Persist default filters to localStorage
+    try {
+      localStorage.setItem('filters', JSON.stringify(filterData));
+    } catch {}
 
     onFilterChange?.(filterData);
   };
