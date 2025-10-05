@@ -1,4 +1,8 @@
 import kinderIcon from "assets/icons/kinder.svg";
+import eduIcon from "assets/icons/edu.svg";
+import medIcon from "assets/icons/med.svg";
+import locationIcon from "assets/icons/location.svg";
+import carsIcon from "assets/icons/cars.svg";
 import { BadgeType, type BadgeProps } from "components/Card/types";
 import React from "react";
 
@@ -6,10 +10,28 @@ import { Text } from "components/Text/Text";
 import styles from "./Badge.module.scss";
 
 // Функция для получения иконки по типу
-const getIconForType = (_type: string) => {
-  // Пока используем одну иконку для всех типов
-  // В будущем можно добавить разные иконки для каждого типа
-  return kinderIcon;
+const getIconForType = (type: string) => {
+  switch (type) {
+    case 'school':
+      return eduIcon;
+    case 'kindergarten':
+      return kinderIcon;
+    case 'clinic':
+      return medIcon;
+    case 'pharmacy':
+      return medIcon;
+    case 'park':
+    case 'metro':
+    case 'pickup_point':
+      return locationIcon;
+    case 'parking':
+      return carsIcon;
+    case 'shopping_mall':
+    case 'grocery_store':
+      return locationIcon; // Используем location как общую иконку для магазинов
+    default:
+      return locationIcon; // Иконка по умолчанию
+  }
 };
 
 const Badge: React.FC<BadgeProps> = ({ ...BadgeProps }) => {

@@ -62,7 +62,7 @@ const Card: React.FC<CardProps> = ({ ...CardProps }) => {
 
         <div className={styles["card__badges"]}>
           {CardProps.infrastructure.map((badge, index) => {
-            if (index < 4) {
+            if (index < 8) {
               return (
                 <Badge key={index} type={badge.type} count={badge.count} />
               );

@@ -19,7 +19,7 @@ const Map = ({items}: MapProps) => {
     return (
         <div className='map-container'>
             {/* @ts-expect-error */}
-            <MapContainer center={[55.792437, 37.662332]} zoom={9} scrollWheelZoom={true} attributionControl={false}>
+            <MapContainer center={[55.792437, 37.662332]} zoom={10} scrollWheelZoom={true} attributionControl={false}>
               {/* @ts-expect-error */}
               <TileLayer attribution='&copy; <a href="https://dev.2gis.ae/">2GIS</a>'
                 url="http://tile2.maps.2gis.com/tiles?x={x}&y={y}&z={z}"
@@ -34,7 +34,7 @@ const Map = ({items}: MapProps) => {
                            {item.title}
                          </h3>
                          <p style={{ margin: '0 0 8px 0', fontSize: '14px', color: '#666' }}>
-                           Индекс: {item.individualIndex}
+                           Индекс: {item.individualIndex.toFixed(2)}
                          </p>
                          <button 
                            onClick={() => handleDetailsClick(item.id)}

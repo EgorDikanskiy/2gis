@@ -12,6 +12,14 @@
   padding: 18px;
   overflow-y: auto;
   box-shadow: 2px 0 8px rgba(16, 15, 13, 0.1);
+  
+  /* Скрытие скроллбара */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.filter::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 .item {

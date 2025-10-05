@@ -4,6 +4,7 @@ import Map from '../../components/Map';
 import CatalogBlock from '../../components/CatalogBlock';
 import Filter from '../../components/Filter';
 import type { CardProps } from '../../components/Card/types';
+import styles from './HomePage.module.scss'
 
 
 const HomePage = () => {
@@ -25,26 +26,46 @@ const HomePage = () => {
             setError(null);
             const data = await fetchCards({ filters: [
                 {
-                    "type": "school",
-                    "priority": 5
+                  "type": "school",
+                  "priority": 5
                 },
                 {
-                    "type": "kindergarten",
-                    "priority": 5
+                  "type": "kindergarten",
+                  "priority": 5
                 },
                 {
-                    "type": "parking",
-                    "priority": 5
+                  "type": "parking",
+                  "priority": 5
                 },
                 {
-                    "type": "park",
-                    "priority": 5
+                  "type": "park",
+                  "priority": 5
                 },
                 {
-                    "type": "clinic",
-                    "priority": 5
+                  "type": "clinic",
+                  "priority": 5
+                },
+                {
+                  "type": "metro",
+                  "priority": 5
+                },
+                {
+                  "type": "grocery_store",
+                  "priority": 5
+                },
+                {
+                  "type": "shopping_mall",
+                  "priority": 5
+                },
+                {
+                  "type": "pharmacy",
+                  "priority": 5
+                },
+                {
+                  "type": "pickup_point",
+                  "priority": 5
                 }
-            ] });
+              ] });
             setCards(data);
         } catch (err) {
             console.error('Error loading initial data:', err);
@@ -171,7 +192,7 @@ const HomePage = () => {
                 return <div className='map-container'><Map items={cards} /></div>;
             case 'catalog':
             default:
-                return <div><CatalogBlock cards={cards} maxColumnCount={3} itemsPerPage={6} /></div>;
+                return <div className='container'><CatalogBlock cards={cards} maxColumnCount={3} itemsPerPage={6} /></div>;
         }
     };
 

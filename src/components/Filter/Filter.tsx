@@ -12,6 +12,7 @@ interface FilterItem {
   label: string;
   value: number;
   type: string;
+  icon: string;
 }
 
 interface FilterData {
@@ -62,7 +63,7 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
       label: "Парковки",
       value: tempFilters.parking,
       type: "parking",
-      icon: locationIcon,
+      icon: carsIcon,
     },
     {
       id: "park",
@@ -77,6 +78,41 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
       value: tempFilters.clinic,
       type: "clinic",
       icon: medIcon,
+    },
+    {
+      id: "metro",
+      label: "Метро",
+      value: tempFilters.metro,
+      type: "metro",
+      icon: locationIcon,
+    },
+    {
+      id: "grocery_store",
+      label: "Магазины",
+      value: tempFilters.grocery_store,
+      type: "grocery_store",
+      icon: locationIcon,
+    },
+    {
+      id: "shopping_mall",
+      label: "Торговые центры",
+      value: tempFilters.shopping_mall,
+      type: "shopping_mall",
+      icon: locationIcon,
+    },
+    {
+      id: "pharmacy",
+      label: "Аптеки",
+      value: tempFilters.pharmacy,
+      type: "pharmacy",
+      icon: medIcon,
+    },
+    {
+      id: "pickup_point",
+      label: "Пункты выдачи",
+      value: tempFilters.pickup_point,
+      type: "pickup_point",
+      icon: locationIcon,
     },
   ];
 
@@ -105,6 +141,11 @@ const Filter: React.FC<FilterProps> = ({ onFilterChange }) => {
       parking: 5,
       park: 5,
       clinic: 5,
+      metro: 5,
+      grocery_store: 5,
+      shopping_mall: 5,
+      pharmacy: 5,
+      pickup_point: 5,
     };
     setTempFilters(defaultFilters);
     setFilters(defaultFilters);
