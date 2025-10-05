@@ -122,7 +122,7 @@ const DetailPage = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const API_BASE_URL = 'http://localhost:8000/api';
+    const API_BASE_URL = 'https://twomatch-backend.where-pizza.ru/api';
 
     useEffect(() => {
         setSearchParams({}, { replace: true });
@@ -142,9 +142,12 @@ const DetailPage = () => {
             const storedIndividualIndex = localStorage.getItem('individualIndex');
             const individualIndex = storedIndividualIndex ? parseFloat(storedIndividualIndex) : 0;
             
+            const Savedfilters = localStorage.getItem('filters');
+
             const data = await fetchDetailData({
                 id: id,
-                individualIndex: individualIndex
+                individualIndex: individualIndex,
+                filters: Savedfilters
             });
             setDetailData(data);
         } catch (err) {
@@ -157,7 +160,7 @@ const DetailPage = () => {
         }
     };
 
-    const fetchDetailData = async (requestData: { id: string; individualIndex: number }) => {
+    const fetchDetailData = async (requestData: { id: string; individualIndex: number, filters: any }) => {
         try {
             const response = await fetch(`${API_BASE_URL}/buildings/detail`, {
                 method: 'POST',
