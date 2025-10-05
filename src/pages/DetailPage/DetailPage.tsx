@@ -122,7 +122,7 @@ const DetailPage = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const API_BASE_URL = 'http://localhost:8000/api';
+    const API_BASE_URL = 'https://twomatch-backend.where-pizza.ru/api';
 
     useEffect(() => {
         setSearchParams({}, { replace: true });
