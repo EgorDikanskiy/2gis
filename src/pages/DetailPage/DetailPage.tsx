@@ -5,7 +5,7 @@ import type { DetailObject } from './types';
 import Map from '../../components/Map';
 import styles from './DetailPage.module.scss'
 
-const detailObject = {
+const detailObject: DetailObject = {
     id: 1,
     title: "ЖК «Современный»",
     image: "https://placehold.co/600x400",
@@ -87,13 +87,11 @@ const detailObject = {
       lat: 55.7558,
       lon: 37.6173
     }
-  };
+};
 
-// Функция для извлечения объектов инфраструктуры для отображения на карте
 const extractMapItems = (detailObject: DetailObject) => {
     const items = [];
     
-    // Добавляем сам detailObject в начало массива
     items.push({
         id: detailObject.id,
         title: detailObject.title,
@@ -102,14 +100,12 @@ const extractMapItems = (detailObject: DetailObject) => {
         individualIndex: detailObject.individualIndex
     });
     
-    // Проходим по всем типам инфраструктуры
     detailObject.infrastructure.forEach(infrastructureType => {
-        // Проходим по всем объектам в каждом типе инфраструктуры
         infrastructureType.objects.forEach(object => {
             items.push({
                 id: object.id,
                 title: object.title,
-                rating: parseFloat(object.rating), // Преобразуем строку в число
+                rating: parseFloat(object.rating),
                 coordinates: {lat: object.coordinates.lon, lon: object.coordinates.lat}
             });
         });
@@ -125,27 +121,31 @@ const DetailPage = () => {
         setSearchParams({}, { replace: true });
     }, [setSearchParams]);
 
-    // Получаем объекты для карты
     const mapItems = extractMapItems(detailObject);
 
     return (
         <div className='container'>
             <section className={styles.root_info}>
-                <img src={detailObject.image}></img>
-                <div>
-                    <h2>{detailObject.title}</h2> | <h2>{detailObject.individualIndex}</h2>
-                    <p>{detailObject.address}</p>
-                    {detailObject.infrastructure.map((infrastructureType, index) => (
-                        <Badge 
-                            key={index}
-                            type={infrastructureType.type}
-                            count={infrastructureType.count}
-                        />
-                    ))}
+                <img src={detailObject.image} className={styles.image} />
+                <div className={styles['info-container']}>
+                    <div>
+                        <h2 className={styles.title}>{detailObject.title}</h2>
+                        <h2 className={styles.title}>{detailObject.individualIndex}</h2>
+                    </div>
+                    <p className={styles.address}>{detailObject.address}</p>
+                    <div className={styles.badges}>
+                        {detailObject.infrastructure.map((infrastructureType, index) => (
+                            <Badge 
+                                key={index}
+                                type={infrastructureType.type}
+                                count={infrastructureType.count}
+                            />
+                        ))}
+                    </div>
                 </div>
             </section>
             {/* @ts-expect-error */}
-            <div className='map-container'><Map items={mapItems} /></div>
+            <div className={'map-container'}><Map items={mapItems} /></div>
         </div>
     )
 }
