@@ -12,6 +12,7 @@ const Badge: React.FC<BadgeProps> = ({ ...BadgeProps }) => {
       <div className={styles.badge}>
         <img src={kinderIcon} width={20} height={20} alt="Kinder Icon" />
         <Text tag="div" view="p-16" color="primary" weight="normal">
+          {/* @ts-expect-error */}
           {BadgeType[BadgeProps.type]}:{" "}
           <Text tag="span" view="p-16" color="green" weight="normal">
             {BadgeProps.count}

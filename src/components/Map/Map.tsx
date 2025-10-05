@@ -1,17 +1,19 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import {TileLayer, MapContainer, Marker, Popup} from "react-leaflet";
 import type { CardProps } from "../Card/types";
+import type { DetailObject } from '../../pages/DetailPage/types'
 import { useNavigate } from "react-router-dom";
+import { routerUrls } from "config/routerUrls";
 
 interface MapProps {
-    items: CardProps[];
+    items: CardProps[] | DetailObject;
 }
 
 const Map = ({items}: MapProps) => {
     const navigate = useNavigate();
 
     const handleDetailsClick = (itemId: number) => {
-        navigate(`/details/${itemId}`);
+        navigate(routerUrls.detail.create(itemId), { replace: true });
     };
 
     return (
@@ -22,6 +24,7 @@ const Map = ({items}: MapProps) => {
               <TileLayer attribution='&copy; <a href="https://dev.2gis.ae/">2GIS</a>'
                 url="http://tile2.maps.2gis.com/tiles?x={x}&y={y}&z={z}"
               />
+              {/* @ts-expect-error */}
               {items.map((item)  => {
                 return (
                    <Marker key={item.id} position={[item.coordinates.lon, item.coordinates.lat]}>

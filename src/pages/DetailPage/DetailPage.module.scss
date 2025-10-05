@@ -1,0 +1,40 @@
+@use "../../styles/variables.scss";
+@use "../../styles/mixin.scss";
+
+.root_info {
+  display: flex;
+  gap: 24px;
+  padding: 24px 0;
+
+  .image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    @include mixin.rounded-box(variables.$border-radius);
+    object-fit: cover;
+  }
+
+  .info-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .title {
+      @extend .medium20;
+      color: variables.$text-brand;
+      margin: 0;
+    }
+
+    .address {
+      @extend .regular16;
+      color: variables.$text-secondary;
+      margin: 0;
+    }
+
+    .badges {
+      @include mixin.flex-row;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+  }
+}

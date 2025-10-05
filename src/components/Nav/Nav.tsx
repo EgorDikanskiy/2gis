@@ -1,10 +1,14 @@
 import React from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate, useLocation } from 'react-router-dom';
 import styles from './Nav.module.scss';
+import { routerUrls } from 'config/routerUrls';
+import logo from '../../assets/images/logo.png'
 
 const Nav: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const currentTab = searchParams.get('tab') || 'catalog';
+  const navigate = useNavigate();
+  const location = useLocation();
+  const currentTab = searchParams.get('tab');
   
   React.useEffect(() => {
     if (!searchParams.get('tab')) {
@@ -13,14 +17,20 @@ const Nav: React.FC = () => {
   }, [searchParams, setSearchParams]);
 
   const handleTabChange = (tab: string) => {
-    setSearchParams({ tab });
+    if (location.pathname !== routerUrls.root) {
+      navigate(`${routerUrls.root}?tab=${tab}`, { replace: true });
+    } else {
+      setSearchParams({ tab }, { replace: true });
+    }
   };
 
   return (
     <nav className={styles.nav}>
       <div className={styles.container}>
         <div className={styles.logo}>
-          <span className={styles.logoText}>2GIS</span>
+          <span className={styles.logoText}>
+            <img src={logo}></img>
+          </span>
         </div>
         <ul className={styles.menu}>
           <li className={styles.menuItem}>

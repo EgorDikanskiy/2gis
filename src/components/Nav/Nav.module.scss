@@ -24,14 +24,7 @@
 }
 
 .logoText {
-  color: variables.$green-main;
-  text-decoration: none;
-  letter-spacing: -0.5px;
-  margin-bottom: 0;
-  
-  &:hover {
-    color: variables.$green-tap;
-  }
+  width: 98px;
 }
 
 .menu {
