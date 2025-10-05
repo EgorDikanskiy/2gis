@@ -14,7 +14,7 @@ const HomePage = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const API_BASE_URL = 'https://twomatch-backend.where-pizza.ru/api';
+    const API_BASE_URL = 'http://twomatch-backend.where-pizza.ru/api';
 
     useEffect(() => {
         // Try loading saved filters from localStorage
