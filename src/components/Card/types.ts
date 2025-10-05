@@ -22,6 +22,13 @@ export const BadgeType = {
     school: 'Школ',
     kindergarten: 'Дет. садов',
     park: 'Парков',
+    pickup_point: 'Пунктов выдачи',
+    pharmacy: 'Аптек',
+    shopping_mall: 'ТЦ',
+    grocery_store: 'Магазинов',
+    metro: 'Метро',
+    clinic: 'Клиник',
+    parking: 'Парковок',
 };
 
 export type BadgeType = typeof BadgeType[keyof typeof BadgeType];

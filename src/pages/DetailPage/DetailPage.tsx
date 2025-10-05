@@ -4,6 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import type { DetailObject } from './types';
 import Map from '../../components/Map';
 import styles from './DetailPage.module.scss'
+import { Text } from "components/Text/Text";
 
 const detailObject: DetailObject = {
     id: 1,
@@ -130,7 +131,17 @@ const DetailPage = () => {
                 <div className={styles['info-container']}>
                     <div>
                         <h2 className={styles.title}>{detailObject.title}</h2>
-                        <h2 className={styles.title}>{detailObject.individualIndex}</h2>
+                        <div className="">
+                          <Text tag="div" view="p-18" color="primary" weight="medium">
+                            Подходит вам
+                          </Text>
+                          <Text tag="div" view="p-18" color="primary" weight="medium">
+                            {"на "}
+                            <Text tag="span" view="p-18" color="green" weight="medium">
+                              {detailObject.individualIndex.toFixed(2)}
+                            </Text>
+                          </Text>
+                        </div>
                     </div>
                     <p className={styles.address}>{detailObject.address}</p>
                     <div className={styles.badges}>
