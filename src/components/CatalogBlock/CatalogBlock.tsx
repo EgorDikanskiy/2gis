@@ -33,7 +33,6 @@ const CatalogBlock: React.FC<CatalogBlockProps> = ({
           <Card key={startIndex + index} {...card} />
         ))}
       </div>
-      <p>avaegaeggeeg</p>
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
